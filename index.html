@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <!-- Necessary for responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Map Styling; attribution in file -->
+    <script src="css/mapStyles.js" charset="urf-8"></script>
+  </head>
+  <body>
+
+    <div class="wrapper">
+      <nav id="sidebar">
+        <!--Sidebar header-->
+        <div class="sidebar-header">
+          <h1>What's good in Portland?</h1>
+        </div>
+
+        <!-- Sidebar Buttons and things-->
+        <input id="show-places" type="button" value="Show Places">
+        <input id="hide-places" type="button" value="Hide Places">
+
+        <!--Dropdown with Filter-->
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Filter Spots<span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <input class="form-control" id="myInput" type="text" placeholder="Search...">
+            <li><a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Beaches</a></li>
+              <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li id="subMenu"><a href="#">Cannon Beach</a></li>
+                <li id="subMenu"><a href="#">Other Beach</a></li>
+                <li id="subMenu"><a href="#">Still More</a></li>
+              </ul>
+            <li><a href="#">Coffee</a></li>
+            <li><a href="#">Mountains</a></li>
+          </ul>
+      </nav>
+
+      <!-- Toggle Button -->
+      <div id="content">
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+
+            <div class="navbar-header">
+              <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                <i class="glyphicon glyphicon-menu-right"></i>
+              </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <div class="nav navbar-nav navbar-right">
+                <h2>Toggle the side bar</h2>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Map -->
+        <div id="map"></div>
+      </div>
+
+    <!-- Google Maps Api -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5bin4wSADfhht1Gly1FyfI8zBzzmz6mI&v=3&callback=initMap">
+    </script>
+
+    <!-- Google AJAX and Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+     <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+    <!-- Bootstrap Javascript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="map.js"></script>
+
+    <!-- Displayed if Browser can't hang with Javascript -->
+    <noscript>Sorry, your browser does not support Javascript</noscript>
+  </body>
+</html>
