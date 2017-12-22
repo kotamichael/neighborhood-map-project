@@ -26,22 +26,16 @@
         <!-- Sidebar Buttons and things-->
         <input id="show-places" type="button" value="Show Places">
         <input id="hide-places" type="button" value="Hide Places">
+        <br><br>
 
-        <!--Dropdown with Filter-->
-        <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Filter Spots<span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <input class="form-control" id="myInput" type="text" placeholder="Search...">
-            <li><a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Beaches</a></li>
-              <ul class="collapse list-unstyled" id="homeSubmenu">
-                <li id="subMenu"><a href="#">Cannon Beach</a></li>
-                <li id="subMenu"><a href="#">Other Beach</a></li>
-                <li id="subMenu"><a href="#">Still More</a></li>
+        <!--Knockout-generated list with Filter-->
+        <input class="form-control" id="myInput" name="filter" type="search" data-bind="textInput: query" placeholder="Search...">
+        <ul class="list-unstyled">
+            <li><a href="#placesSubmenu" data-toggle="collapse" aria-expanded="false">All the Cool Places</a></li>
+              <ul class="collapse list-unstyled" data-bind="foreach: filteredPlaces" id="placesSubmenu" data-bind="with: currentPlace">
+                <li id="subMenu"><a href="#" data-bind="text: title"></a></li>
               </ul>
-            <li><a href="#">Coffee</a></li>
-            <li><a href="#">Mountains</a></li>
-          </ul>
+        </ul>
       </nav>
 
       <!-- Toggle Button -->
@@ -51,7 +45,7 @@
 
             <div class="navbar-header">
               <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                <i class="glyphicon glyphicon-menu-right"></i>
+                <i class="glyphicon glyphicon-menu-hamburger"></i>
               </button>
             </div>
 
@@ -80,8 +74,14 @@
     <!-- Bootstrap Javascript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <!-- Knockout -->
+    <script src="js/knockout-3.4.2.js"></script>
+
     <!-- Custom JS -->
-    <script src="map.js"></script>
+    <!--<script src="js/map.js"></script>-->
+
+    <!--Custom Knockout: ViewModel-->
+    <script src="js/ViewModel.js"></script>
 
     <!-- Displayed if Browser can't hang with Javascript -->
     <noscript>Sorry, your browser does not support Javascript</noscript>
