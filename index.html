@@ -22,10 +22,6 @@
         <div class="sidebar-header">
           <h1>What's good in Portland?</h1>
         </div>
-
-        <!-- Sidebar Buttons and things-->
-        <input id="show-places" type="button" value="Show Places">
-        <input id="hide-places" type="button" value="Hide Places">
         <br><br>
 
         <!--Knockout-generated list with Filter-->
@@ -33,7 +29,7 @@
         <ul class="list-unstyled">
             <li><a href="#placesSubmenu" data-toggle="collapse" aria-expanded="false">All the Cool Places</a></li>
               <ul class="collapse list-unstyled" data-bind="foreach: filteredPlaces" id="placesSubmenu" data-bind="with: currentPlace">
-                <li id="subMenu"><a href="#" data-bind="text: title"></a></li>
+                <li id="subMenu"><a href="#" data-bind="text: title, click: $parent.listClick"></a></li>
               </ul>
         </ul>
       </nav>
@@ -76,9 +72,6 @@
 
     <!-- Knockout -->
     <script src="js/knockout-3.4.2.js"></script>
-
-    <!-- Custom JS -->
-    <!--<script src="js/map.js"></script>-->
 
     <!--Custom Knockout: ViewModel-->
     <script src="js/ViewModel.js"></script>

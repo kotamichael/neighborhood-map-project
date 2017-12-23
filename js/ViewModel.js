@@ -1,4 +1,6 @@
-
+var markers = [];
+var bounds;
+var infoWindow;
 
 
 				//==================================//
@@ -18,16 +20,15 @@ var locations = [
     {title: 'Either/Or Coffee', lat: 45.4630, lng: -122.6532},
     {title: 'Heart Coffee Roasters', lat: 45.52302359999999, lng: -122.6431899}
     ];
-var map;
-var markers = [];
 
 var Location = function(data) {
 	var self = this;
-	//this.bounds = data.bounds;
 	this.title = data.title;
 	this.lat = data.lat;
 	this.lng = data.lng;
+	this.active = ko.observable(true);
 
+	//set display property to null as default
 	// Create markers here to avoid for-loop spaghetti
 	this.marker = new google.maps.Marker({
 		position: new google.maps.LatLng(data.lat, data.lng),
@@ -36,24 +37,33 @@ var Location = function(data) {
 		icon: self.defaultIcon,
 		animation: google.maps.Animation.DROP,
 	});
-
 	markers.push(this.marker);
 
-	//this.bounds.extend(this.marker.position);
+	//If active state set to true, markers will be displayed
+	this.display = ko.computed( function() {
+		if(self.active() === true) {
+			self.marker.setMap(map);
+			bounds.extend(self.marker.position);
+			map.fitBounds(bounds)
+		} else {
+			self.marker.setMap(null);
+		}
+	});
 
 	// Declares the variable and gives inherited functionality
-	this.infowindow = new google.maps.InfoWindow();
+	this.marker.addListener('click', function() {
+		self.marker.setAnimation(google.maps.Animation.BOUNCE)
+		setTimeout(function() {
+			self.marker.setAnimation(null);
+		}, 1400);
+	});
 
 	this.marker.addListener('click', function() {
-	  self.infowindow.setContent('<div>' + self.title + '</div>');
-	  self.infowindow.open(map, this);
-	  self.infowindow.addListener('closerclick', function() {
-	  	self.infowindow.setMarker(null);
+	  infowindow.setContent('<div>' + self.title + '</div>');
+	  infowindow.open(map, this);
+	  infowindow.addListener('closerclick', function() {
+	  	infowindow.setMarker(null);
 	  });
-	  self.marker.setAnimation(google.maps.Animation.BOUNCE)
-	  setTimeout(function() {
-	  	self.marker.setAnimation(null);
-	  }, 1400);
 	});
 };
 
@@ -63,72 +73,68 @@ var Location = function(data) {
 //========================= V I E W  M O D E L =========================//
 		//========================================================//
 
+function initMap() {
+// Defines map variable as the new google map with parameters.
+	map = new google.maps.Map(document.getElementById('map'), {
+	  center: {lat: 41.096743, lng: -85.114917},
+	  zoom: 13,
+	  styles: styles,
+	});
+
+	infowindow = new google.maps.InfoWindow();
+
+	// Declares the variable and gives inherited functionality
+	bounds = new google.maps.LatLngBounds();
+	ko.applyBindings(new ViewModel());
+};
+
 var ViewModel = function() {
 	var self = this;
 
 	//Create an observabelt array to fill with Locations
 	this.placeList = ko.observableArray([]);
 
-	// Query search results in the sidebar using the ko utils array Filter
-	//function.
-	this.query = ko.observable('');
-	this.filteredPlaces = ko.computed(function() {
-		if (this.query()) {
-			var search = this.query().toLowerCase();
-			return ko.utils.arrayFilter(this.placeList(), function(place) {
-				return place.title.toLowerCase().indexOf(search) >= 0;
-			});
-		} else {
-			return self.placeList();
-		}}, this);
-
 	//loop over each place and push them into the placeList array
 	locations.forEach(function(locItem) {
 		self.placeList.push( new Location(locItem) );
 	});
+	this.currentMarker = ko.observable( this.placeList()[0] );
 
-	//this.currentPlace = ko.observable( this.placeList()[0] );
+	this.listClick = function(place) {
+	      google.maps.event.trigger(place.marker, 'click');
+	};
 
+	this.showPlaces = function() {
+		self.placeList().forEach(function(place) {
+			place.active(true);
+		})
+	};
+	this.hidePlaces = function() {
+		self.placeList().forEach(function(place) {
+			place.active(false);
+		})
+	};
+
+	// Query search results in the sidebar using the ko utils array Filter
+	//function.
+	this.query = ko.observable('');
+	this.filteredPlaces = ko.computed(function() {
+		self.hidePlaces();
+		var search = self.query().toLowerCase();
+		var these = ko.utils.arrayFilter(self.placeList(), function(place) {
+			return place.title.toLowerCase().indexOf(search) >= 0;
+		});
+		if (these) {
+			for (var i = 0; i < these.length; i++) {
+				these[i].active(true);
+			}
+		return these;
+		}
+	});
 
 	// Toggles sidebar //
 	$('#sidebarCollapse').on('click', function () {
 	    $('#sidebar').toggleClass('active');
 	    $(this).toggleClass('active');
 	});
-
-                //============================================
-   //========================   M   A    P   ============================
-   		//==========================================================z
-
-	  // Defines map variable as the new google map with parameters.
-	  map = new google.maps.Map(document.getElementById('map'), {
-	    center: {lat: 41.096743, lng: -85.114917},
-	    zoom: 13,
-	    styles: styles,
-	  });
-
-	  function showPlaces() {
-	    var bounds = new google.maps.LatLngBounds();
-	    for (var i = 0; i < markers.length; i++) {
-	      markers[i].setMap(map);
-	      bounds.extend(markers[i].position);
-	    }
-	    map.fitBounds(bounds);
-	  }
-
-	  function hidePlaces() {
-	    for (var i = 0; i < markers.length; i++) {
-	      markers[i].setMap(null);
-	    }
-	  }
-
-	  // Declares the variable and gives inherited functionality
-	  var bounds = new google.maps.LatLngBounds();
-
-	  document.getElementById('show-places').addEventListener('click', showPlaces);
-	  document.getElementById('hide-places').addEventListener('click', hidePlaces);
 };
-
-function initMap() {
-	ko.applyBindings(new ViewModel())
-}
