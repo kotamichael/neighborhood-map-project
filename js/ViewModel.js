@@ -34,6 +34,9 @@ var Location = function(data) {
     self.city = '';
     self.category = '';
     self.id = '';
+    self.imgSrc = '';
+    self.imgPrefix = '';
+    self.imgSuffix = '';
 
    	self.imgURL = '';
 
@@ -75,15 +78,21 @@ var Location = function(data) {
                 self.city = response.location.formattedAddress[1];
                 self.category = response.categories[0].shortName;
                 self.id = response.id;
+                self.imgLink = '';
 
                	self.imgURL = 'https://api.foursquare.com/v2/venues/' + self.id + '/photos?limit=1&client_id='
                 + clientID + '&client_secret=' + clientSecret + '&v=20171224';
 
-                $.get(self.imgURL).done(function(marker) {
-                	console.log(self.imgURL);
+                $.get(self.imgURL).done(function(img) {
+                	self.imgPrefix = img.response.photos.items[0].prefix;
+                	self.imgSuffix = img.response.photos.items[0].suffix;
+                	self.imgSrc = self.imgPrefix.toString() + '500x300' + self.imgSuffix.toString();
+                	self.imgLink = '<img src="' + self.imgSrc + '">'
+                	self.result += self.imgLink;
                 });
-
-                self.result =
+                console.log(self.imgLink);
+                self.result +=
+                	self.imgLink +
                     '<h3>' + self.title +
                     '</h3>' + '<div>' +
                     '<h6> Address: </h6>' +
