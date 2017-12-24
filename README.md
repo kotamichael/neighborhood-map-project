@@ -1,7 +1,5 @@
 # Portland Area Neighborhood Map
 
-![Part of the Udacity Fullstack Web Developer Nanodegree](https://img.shields.io/badge/Udacity-Fullstack-Web%20Web%20Developer%20Nanodegree-02b3e4.svg)
-
 > Developed as project no. 5 for the Udacity Fullstack Web Developer Nanodegree!
 
 This is the **Udacity Neighborhood Map Project**. It's intended as a challenge to put together a website from various APIs. This includes making function calls to Google Maps and other location-based services like Foursquare. 🔰
