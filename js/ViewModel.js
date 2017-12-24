@@ -37,6 +37,7 @@ var Location = function(data) {
     self.imgSrc = '';
     self.imgPrefix = '';
     self.imgSuffix = '';
+    self.result = '';
 
    	self.imgURL = '';
 
