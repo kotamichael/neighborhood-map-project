@@ -34,7 +34,6 @@ var Location = function(data) {
     self.city = '';
     self.category = '';
     self.id = '';
-    self.result = '';
 
    	self.imgURL = '';
 
