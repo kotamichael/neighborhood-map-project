@@ -9,7 +9,7 @@
 3. Type in the white bar if you only want to see a few of the places listed on the map to make it easier to spot.
 
 # Recent Updates
-## Last updated February 9, 2017
+## Last updated December 24, 2017
 
 Updated with new location of Hacker Dojo (old one has been left intact for historical purposes) 👩🏽‍
 
