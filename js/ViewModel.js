@@ -86,13 +86,11 @@ var Location = function(data) {
                 $.get(self.imgURL).done(function(img) {
                 	self.imgPrefix = img.response.photos.items[0].prefix;
                 	self.imgSuffix = img.response.photos.items[0].suffix;
-                	self.imgSrc = self.imgPrefix.toString() + '500x300' + self.imgSuffix.toString();
+                	self.imgSrc = self.imgPrefix.toString() + '100x75' + self.imgSuffix.toString();
                 	self.imgLink = '<img src="' + self.imgSrc + '">'
                 	self.result += self.imgLink;
                 });
-                console.log(self.imgLink);
                 self.result +=
-                	self.imgLink +
                     '<h3>' + self.title +
                     '</h3>' + '<div>' +
                     '<h6> Address: </h6>' +
