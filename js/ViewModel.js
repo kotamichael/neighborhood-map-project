@@ -2,6 +2,10 @@ var markers = [];
 var bounds;
 var infoWindow;
 
+// Declares Foursquare credentials as global variables.
+var clientID = "2MZAR14ZUTJG1TSXZVK5ISFD1SGA3RYBYXMGNW5JLWIMG0ZO";
+var clientSecret = "WKYOJSUBY1BNC3MJRPXADYN5X1VDRWVOPMFTF0LWLTR1Z2OB";
+
 
 				//==================================//
 //===========================  M O D E L ============================//
@@ -50,6 +54,12 @@ var Location = function(data) {
 		}
 	});
 
+	// URL for Foursquare API
+	var foursquareURL = 'https://api.foursquare.com/v2/venues/search?ll=' + 
+		self.marker.lat + ',' + self.marker.lng + '&client_id=' + clientID +
+	    '&client_secret=' + clientSecret + '&query=' + self.marker.title +
+	    '&v=20170708' + '&m=foursquare';
+
 	// Declares the variable and gives inherited functionality
 	this.marker.addListener('click', function() {
 		self.marker.setAnimation(google.maps.Animation.BOUNCE)
@@ -86,6 +96,10 @@ function initMap() {
 	// Declares the variable and gives inherited functionality
 	bounds = new google.maps.LatLngBounds();
 	ko.applyBindings(new ViewModel());
+};
+
+function mapError() {
+	document.getElementById("map").innerHTML = "<h2>An error occured while loading your map. Please refresh the page to try again.</h2>";
 };
 
 var ViewModel = function() {
