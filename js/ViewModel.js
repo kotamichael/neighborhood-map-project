@@ -34,6 +34,7 @@ var Location = function(data) {
     self.city = '';
     self.category = '';
     self.id = '';
+    self.result = '';
 
    	self.imgURL = '';
 
@@ -78,20 +79,20 @@ var Location = function(data) {
 
                	self.imgURL = 'https://api.foursquare.com/v2/venues/' + self.id + '/photos?limit=1&client_id='
                 + clientID + '&client_secret=' + clientSecret + '&v=20171224';
+
+                self.result =
+                    '<h3>' + self.title +
+                    '</h3>' + '<div>' +
+                    '<h6> Address: </h6>' +
+                    '<p>' + self.street + '</p>' +
+                    '<p>' + self.city + '</p>' +
+                    '<h6> Category: ' + self.category +
+                    '</h6>' + '</div>' + '</div>';
     });
 
     $.get(self.imgURL).done(function(marker) {
     	console.log(self.imgURL);
    	});
-
-    self.result =
-        '<h3>' + self.title +
-        '</h3>' + '<div>' +
-        '<h6> Address: </h6>' +
-        '<p>' + self.street + '</p>' +
-        '<p>' + self.city + '</p>' +
-        '<h6> Category: ' + self.category +
-        '</h6>' + '</div>' + '</div>';
 
 	// Declares the variable and gives inherited functionality
 	this.marker.addListener('click', function() {
