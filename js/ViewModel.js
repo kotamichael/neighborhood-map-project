@@ -90,8 +90,8 @@ var Location = function(data) {
         '<h6> Address: </h6>' +
         '<p>' + self.street + '</p>' +
         '<p>' + self.city + '</p>' +
-        '<p>Category:' + self.category +
-        '</p>' + '</div>' + '</div>';
+        '<h6> Category: ' + self.category +
+        '</h6>' + '</div>' + '</div>';
 
 	// Declares the variable and gives inherited functionality
 	this.marker.addListener('click', function() {
