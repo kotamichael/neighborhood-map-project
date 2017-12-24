@@ -55,10 +55,28 @@ var Location = function(data) {
 	});
 
 	// URL for Foursquare API
-	var foursquareURL = 'https://api.foursquare.com/v2/venues/search?ll=' + 
-		self.marker.lat + ',' + self.marker.lng + '&client_id=' + clientID +
+	var rawURL = 'https://api.foursquare.com/v2/venues/search?ll=' + 
+		self.lat + ',' + self.lng + '&client_id=' + clientID +
 	    '&client_secret=' + clientSecret + '&query=' + self.marker.title +
-	    '&v=20170708' + '&m=foursquare';
+	    '&v=20171223' + '&m=foursquare';
+
+	var URL = rawURL.replace(/\s/g, "%20");
+
+	$.getJSON(URL).done(function(marker) {
+                var response = marker.response.venues[0];
+                self.street = response.location.formattedAddress[0];
+                self.city = response.location.formattedAddress[1];
+                self.category = response.categories[0].shortName;
+                self.result =
+                    '<h3>' + self.title +
+                    '</h3>' + '<div>' +
+                    '<h6> Address: </h6>' +
+                    '<p>' + self.street + '</p>' +
+                    '<p>' + self.city + '</p>' +
+                    '<p>' + self.category +
+                    '</p>' + '</div>' + '</div>';
+    });
+    console.log(URL)
 
 	// Declares the variable and gives inherited functionality
 	this.marker.addListener('click', function() {
@@ -69,7 +87,7 @@ var Location = function(data) {
 	});
 
 	this.marker.addListener('click', function() {
-	  infowindow.setContent('<div>' + self.title + '</div>');
+	  infowindow.setContent(self.result);
 	  infowindow.open(map, this);
 	  infowindow.addListener('closerclick', function() {
 	  	infowindow.setMarker(null);
