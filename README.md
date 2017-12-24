@@ -2,7 +2,7 @@
 
 > Developed as project no. 5 for the Udacity Fullstack Web Developer Nanodegree!
 
-![Screenshot of map](https://i.imgur.com/XanPKyT.jpg)
+![Screenshot of map](https://imgur.com/ANgGLkP)
 
 This project is designed for use primarily on a laptop or tablet, but it has been optimized for phone screens as well.  If you're interested in the app's responsiveness, you can open developer tools in your browser and resize the screen, or simply open run the app from another machine.
 
