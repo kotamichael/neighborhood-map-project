@@ -1,6 +1,7 @@
 # Portland Area Neighborhood Map
 
 > Developed as project no. 5 for the Udacity Fullstack Web Developer Nanodegree!
+
 [Imgur](https://i.imgur.com/XanPKyT.jpg)
 
 # How To Use
