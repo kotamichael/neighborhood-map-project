@@ -30,6 +30,13 @@ var Location = function(data) {
 	this.title = data.title;
 	this.lat = data.lat;
 	this.lng = data.lng;
+	self.street = '';
+    self.city = '';
+    self.category = '';
+    self.id = '';
+
+   	self.imgURL = '';
+
 	this.active = ko.observable(true);
 
 	//set display property to null as default
@@ -67,16 +74,24 @@ var Location = function(data) {
                 self.street = response.location.formattedAddress[0];
                 self.city = response.location.formattedAddress[1];
                 self.category = response.categories[0].shortName;
-                self.result =
-                    '<h3>' + self.title +
-                    '</h3>' + '<div>' +
-                    '<h6> Address: </h6>' +
-                    '<p>' + self.street + '</p>' +
-                    '<p>' + self.city + '</p>' +
-                    '<p>' + self.category +
-                    '</p>' + '</div>' + '</div>';
+                self.id = response.id;
+
+               	self.imgURL = 'https://api.foursquare.com/v2/venues/' + self.id + '/photos?limit=1&client_id='
+                + clientID + '&client_secret=' + clientSecret + '&v=20171224';
     });
-    console.log(URL)
+
+    $.get(self.imgURL).done(function(marker) {
+    	console.log(self.imgURL);
+   	});
+
+    self.result =
+        '<h3>' + self.title +
+        '</h3>' + '<div>' +
+        '<h6> Address: </h6>' +
+        '<p>' + self.street + '</p>' +
+        '<p>' + self.city + '</p>' +
+        '<p>' + self.category +
+        '</p>' + '</div>' + '</div>';
 
 	// Declares the variable and gives inherited functionality
 	this.marker.addListener('click', function() {
