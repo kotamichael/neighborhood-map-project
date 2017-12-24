@@ -5,8 +5,8 @@
 # How To Use
 
 1. Click here to try the [online demo](https://kotamichael.github.io/neighborhood-map-project/) 
-2. Click on any of the places on the map / sidebar for more information
-3. Type in the white bar if you only want to see a few of the places listed on the map to make it easier to spot.
+2. Click on any of the places on the map / sidebar for more information. Except for Mount Jefferson, every site has a photo associated with it.  For some reason Mount Jefferson hasn't been shown any love with pictures yet, but as soon as some one adds a photo to Foursquare for it, it'll automatically show up.
+3. The "All the cool places" dropdown menu displays the names of all the markers on the map.  Type in the search area if you only want to see a few of the places listed on the map to make it easier to spot. You can click on any location to display more information in either the sidebar or the marker itself.
 
 # Recent Updates
 ## Last updated December 24, 2017
