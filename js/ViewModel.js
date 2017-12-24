@@ -90,7 +90,7 @@ var Location = function(data) {
         '<h6> Address: </h6>' +
         '<p>' + self.street + '</p>' +
         '<p>' + self.city + '</p>' +
-        '<p>' + self.category +
+        '<p>Category:' + self.category +
         '</p>' + '</div>' + '</div>';
 
 	// Declares the variable and gives inherited functionality
