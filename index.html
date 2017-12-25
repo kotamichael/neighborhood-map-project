@@ -11,8 +11,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
 
-    <!-- Map Styling; attribution in file -->
-    <script src="css/mapStyles.js" charset="urf-8"></script>
+    <title>Portland Neighborhood Map</title>
   </head>
   <body>
 
@@ -28,7 +27,7 @@
         <input class="form-control" id="myInput" name="filter" type="search" data-bind="textInput: query" placeholder="Search...">
         <ul class="list-unstyled">
             <li><a href="#placesSubmenu" data-toggle="collapse" aria-expanded="false">All the Cool Places</a></li>
-              <ul class="collapse list-unstyled" data-bind="foreach: filteredPlaces" id="placesSubmenu" data-bind="with: currentPlace">
+              <ul class="collapse list-unstyled" data-bind="foreach: filteredPlaces, with: currentPlace" id="placesSubmenu">
                 <li id="subMenu"><a href="#" data-bind="text: title, click: $parent.listClick"></a></li>
               </ul>
         </ul>
@@ -62,10 +61,6 @@
         <div id="map"></div>
       </div>
 
-    <!-- Google Maps Api -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5bin4wSADfhht1Gly1FyfI8zBzzmz6mI&v=3&callback=initMap">
-    </script>
-
     <!-- Google AJAX and Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
@@ -80,6 +75,13 @@
 
     <!--Custom Knockout: ViewModel-->
     <script src="js/ViewModel.js"></script>
+
+    <!-- Map Styling; attribution in file -->
+    <script src="css/mapStyles.js" charset="utf-8"></script>
+
+    <!-- Google Maps Api -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5bin4wSADfhht1Gly1FyfI8zBzzmz6mI&v=3&callback=initMap" async defer onerror="mapError()">
+    </script>
 
     <!-- Displayed if Browser can't hang with Javascript -->
     <noscript>Sorry, your browser does not support Javascript</noscript>
