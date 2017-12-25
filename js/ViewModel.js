@@ -85,12 +85,16 @@ var Location = function(data) {
                 + clientID + '&client_secret=' + clientSecret + '&v=20171224';
 
                 $.get(self.imgURL).done(function(img) {
+                	if (typeof img.response.photos.items[0] === 'undefined') {
+                		self.result += '<h5>No photo available</h5>';
+                	}
                 	self.imgPrefix = img.response.photos.items[0].prefix;
                 	self.imgSuffix = img.response.photos.items[0].suffix;
                 	self.imgSrc = self.imgPrefix.toString() + '100x75' + self.imgSuffix.toString();
                 	self.imgLink = '<img src="' + self.imgSrc + '">'
                 	self.result += self.imgLink;
                 });
+
                 self.result +=
                     '<h3>' + self.title +
                     '</h3>' + '<div>' +
@@ -99,6 +103,8 @@ var Location = function(data) {
                     '<p>' + self.city + '</p>' +
                     '<h6> Category: ' + self.category +
                     '</h6>' + '</div>';
+    }).fail(function() {
+    	self.result = '<h3>Something went wrong gathering Foursquare data.</h3>';
     });
 
 	// Declares the variable and gives inherited functionality

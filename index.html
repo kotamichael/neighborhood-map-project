@@ -27,7 +27,7 @@
         <input class="form-control" id="myInput" name="filter" type="search" data-bind="textInput: query" placeholder="Search...">
         <ul class="list-unstyled">
             <li><a href="#placesSubmenu" data-toggle="collapse" aria-expanded="false">All the Cool Places</a></li>
-              <ul class="collapse list-unstyled" data-bind="foreach: filteredPlaces, with: currentPlace" id="placesSubmenu">
+              <ul class="collapse list-unstyled" data-bind="foreach: filteredPlaces" id="placesSubmenu">
                 <li id="subMenu"><a href="#" data-bind="text: title, click: $parent.listClick"></a></li>
               </ul>
         </ul>
