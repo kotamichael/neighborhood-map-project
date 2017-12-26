@@ -84,13 +84,19 @@ var Location = function(data) {
                	self.imgURL = 'https://api.foursquare.com/v2/venues/' + self.id + '/photos?limit=1&client_id='
                 + clientID + '&client_secret=' + clientSecret + '&v=20171224';
 
-                $.get(self.imgURL).done(function(img) {
-                	self.imgPrefix = img.response.photos.items[0].prefix;
-                	self.imgSuffix = img.response.photos.items[0].suffix;
-                	self.imgSrc = self.imgPrefix.toString() + '100x75' + self.imgSuffix.toString();
-                	self.imgLink = '<img src="' + self.imgSrc + '">'
-                	self.result += self.imgLink;
-                }).fail(function() {
+                $.getJSON(self.imgURL).done(function(img) {
+                	if (typeof img.response.photos.items[0] === 'undefined') {
+                		self.result += '<h5>No photo available</h5>';
+                	} else {
+	                	self.imgPrefix = img.response.photos.items[0].prefix;
+	                	self.imgSuffix = img.response.photos.items[0].suffix;
+	                	self.imgSrc = self.imgPrefix.toString() + '100x75' + self.imgSuffix.toString();
+	                	self.imgLink = '<img src="' + self.imgSrc + '">'
+	                	self.result += self.imgLink;
+	                }
+                }).fail(function( jqxhr, textStatus, error ) {
+                	var err = textStatus + ", " + error;
+                	console.log("Request Failed: " + err );
                 	self.result += '<h5>No photo available</h5>';
                 });
 
