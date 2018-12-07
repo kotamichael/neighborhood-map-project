@@ -3,8 +3,8 @@ var bounds;
 var infoWindow;
 
 // Declares Foursquare credentials as global variables.
-var clientID = "2MZAR14ZUTJG1TSXZVK5ISFD1SGA3RYBYXMGNW5JLWIMG0ZO";
-var clientSecret = "SG22VIOF2PHGK51IUMHFH3EG3OLUKXZ1NHG5F4U11RO2IJYA";
+var clientID = "XW3ZIK11U4HBLUHFMCLNR12Y1A2SFM3T1PRSJCIICMBAPAUM";
+var clientSecret = "BDFDKCZ4GAN2I5ZR1JX0RNOXCBY3VUE0VUOOCORYQH4YMRCP";
 
 
 				//==================================//
