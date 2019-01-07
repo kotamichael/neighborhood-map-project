@@ -11,7 +11,7 @@ var clientSecret = "BDFDKCZ4GAN2I5ZR1JX0RNOXCBY3VUE0VUOOCORYQH4YMRCP";
 //===========================  M O D E L ============================//
 		//=====================================================//
 var locations = [
-    {title: 'Cannon Beach!', lat: 45.8917, lng: -123.961527},
+    {title: 'Country Heritage Winery & Vineyard', lat: 41.2808261, lng: -85.1869129},
     {title: 'Cape Kiwanda', lat: 45.2191, lng: -123.9754},
     {title: 'Cape Falcon', lat: 45.7676, lng: -123.9824},
   
