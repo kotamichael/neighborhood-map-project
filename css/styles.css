@@ -4,16 +4,19 @@ body {
   font-family: 'Poppins', sans-serif;
   background: #26F578;
 }
+
 a, a:hover, a:focus {
 	color: inherit;
 	text-decoration: none;
 	transition: all 0.3s;
 }
+
 .wrapper {
 	display: flex;
 	align-items: stretch;
 	perspective: 1500px; /*Defines how many pixels the sidebar is placed from the view. */
 }
+
 .navbar {
 	padding: 5px 5px;
 	border: none;
@@ -21,12 +24,12 @@ a, a:hover, a:focus {
 	margin-bottom: 40px;
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1)
 }
+
 .navbar-btn {
 	box-shadow: none;
 	outline: none !important;
 	border: none;
 }
-
 
 /*------------------------------------
           SIDE BAR
@@ -34,8 +37,8 @@ a, a:hover, a:focus {
 #foursquare img {
 	width: 250px;
 	position:absolute;
-	bottom: 0;
 }
+
 #sidebar {
 	min-width: 250px;
 	max-width: 250px;
@@ -45,9 +48,10 @@ a, a:hover, a:focus {
 	transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
 	transform-origin: center left; /* Set the transformed position of the sidebar to center Left side. */
 }
+
 #myInput {
 	padding: 20px;
-	margin-top: -6;
+	margin-top: 3.5em;
 	border: 0;
 	border-radius: 0;
 	background: #f1f1f1;
@@ -57,10 +61,12 @@ a, a:hover, a:focus {
     padding: 20px;
     background: #6d7fcc;
 }
+
 #sidebar ul {
 	padding:0;
 	margin:0;
 }
+
 #sidebar ul.components {
     padding: 20px 5px;
     border-bottom: 1px solid #47748b;
@@ -76,6 +82,7 @@ a, a:hover, a:focus {
     font-size: 1.1em;
     display: block;
 }
+
 #sidebar ul li a:hover {
     color: #7386D5;
     background: #fff;
@@ -85,18 +92,22 @@ a, a:hover, a:focus {
     color: #fff;
     background: #6d7fcc;
 }
+
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
     background: #6d7fcc;
 }
+
 #sidebar.active{
 	margin-left: -250px;
 	transform: rotateY(100deg);
 }
+
 a[data-toggle="collapse"] {
 	position: relative;
 }
+
 a[aria-expanded="false"]::before, a[aria-expanded="true"]::before{
 	content: '\e259';
 	display: block;
@@ -106,11 +117,13 @@ a[aria-expanded="false"]::before, a[aria-expanded="true"]::before{
 	font-family: 'Glyphicons Halflings';
 	font-size: 0.6em;
 }
+
 #sidebarCollapse {
 	width: 40px;
 	height: 40px;
 	background: #555;
 }
+
 #sidebarCollapse i {
 	width: 80%;
 	margin: 0 auto;
@@ -118,9 +131,11 @@ a[aria-expanded="false"]::before, a[aria-expanded="true"]::before{
 	background: #555;
 	transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);
 }
+
 a[aria-expanded="true"]::before {
 	content: '\e260';
 }
+
 /*---------------------------------------------------
     CONTENT STYLE
 -----------------------------------------------------*/
@@ -128,6 +143,7 @@ a[aria-expanded="true"]::before {
 h2 {
 	color: #FF5733;
 }
+
 #content {
 	padding: 20px;
 	min-height: 100vh;
@@ -136,6 +152,7 @@ h2 {
 	width: 100%;
 	bottom: 0;
 }
+
 #map {
   top: 0px;
   height: 81%;
@@ -156,23 +173,29 @@ h2 {
 		opacity: 50;
 		right: 0;
 	}
+
 	h2 {
 		color: #FF5733;
 	}
+
 	#sidebarCollapse{
 		height: 5%;
 	}
+
     #sidebar {
         margin-left: -250px;
         transform: rotateY(100deg);
     }
+
     #sidebar.active {
         margin-left: 0;
         transform: none;
     }
+
     #sidebarCollapse.active i{
     	margin: 0 auto;
     }
+
     #map {
     	position: absolute;
     	height: 100%;
@@ -181,5 +204,4 @@ h2 {
     	top: 0;
     	z-index: -1;
     }
-
 }
