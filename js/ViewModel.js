@@ -11,18 +11,50 @@ var clientSecret = "BDFDKCZ4GAN2I5ZR1JX0RNOXCBY3VUE0VUOOCORYQH4YMRCP";
 //===========================  M O D E L ============================//
 		//=====================================================//
 var locations = [
-    {title: 'Country Heritage Winery & Vineyard', lat: 41.2808261, lng: -85.1869129},
-    {title: 'Cape Kiwanda', lat: 45.2191, lng: -123.9754},
-    {title: 'Cape Falcon', lat: 45.7676, lng: -123.9824},
+    {title: "Pearly's Beach Eats", lat: 27.9799535, lng: -82.8276398},
+    {title: "Another Broken Egg", lat: 27.9811759, lng: -82.8273802},
   
-    {title: 'Mount Hood', lat: 45.3736, lng: -121.6960},
-    {title: 'Mount Jefferson', lat: 44.6743, lng: -121.7995},
-    {title: 'Chinidere Mountain', lat: 45.5862, lng: -121.8115},
-    {title: 'Multnomah Falls', lat: 45.5762, lng: -122.1158},
+    {title: "The Ordinary Pub", lat: 32.0796435, lng: -81.0970687},
+
+    {title: 'Country Heritage Winery & Vineyard', lat: 41.2808261, lng: -85.1869129},
+    {title: "Cerulean Restaurant", lat: 41.224774, lng: -85.82446},
+    {title: "The Hoppy Gnome", lat: 41.0798617, lng: -85.1400626},
+
+    {title: "Baltimore Coffee & Tea", lat: 39.182849, lng: -76.7348054},
     
-    {title: 'Rimsky-Korsakoffee House', lat: 45.5193, lng: -122.6536},
-    {title: 'Either/Or Coffee', lat: 45.4630, lng: -122.6532},
-    {title: 'Heart Coffee Roasters', lat: 45.52302359999999, lng: -122.6431899}
+    {title: "Bertucci's Italian Restaurant", lat: 42.1404999, lng: -71.1492204},
+    {title: "The Farmer's Daughter (AKA Twisted Sister)", lat: 42.066151, lng: -71.10367},
+    {title: "Legal C Bar", lat: 42.2308999, lng: -71.1800526},
+    {title: "Ward's Berry Farm", lat: 42.098936, lng: -71.21899},
+
+    {title: "Bridger Brewing", lat: 45.6626992, lng: -111.0548371},
+    {title: "Last Chance | Pub & Cider Mill", lat: 45.7847702, lng: -108.5004206},
+    
+    {title: "Rough Draft", lat: 41.9239418, lng: -84.6332216},
+    {title: "Checker Records", lat: 41.9191518, lng: -84.6346659},
+
+    {title: "Laughlin's Slice Of Spice", lat: 42.2080113, lng: -84.5399307},
+    {title: "Meckley's Flavor Fruit Farm", lat: 42.0588913, lng: -84.4081752},
+    {title: "Grand River Brewery", lat: 42.2491175, lng: -84.4093752},
+    {title: "Common Grill", lat: 42.3175779, lng: -84.0229587},
+
+    {title: "Zingerman's Delicatessen", lat: 42.2846861, lng: -83.74726},
+    {title: "Mani Osteria and Bar", lat: 42.2797177, lng: -83.7464692},
+    {title: "The Songbird Cafe", lat: 42.303628, lng: -83.7067514},
+
+    {title: "Crane's Pie Pantry Restaurant & Winery", lat: 42.5936296, lng: -86.1390823},
+    {title: "Blue Heron 2", lat: 44.7602018, lng: -85.6262129},
+    {title: "Grand Hotel", lat: 45.851135, lng: -84.628399},
+
+    {title: "Village Bakery & Cafe - Armory", lat: 43.1421958, lng: -77.5790016},
+
+    {title: "SIP Coffee", lat: 41.6767919, lng: -83.6230942},
+
+    {title: "Pasquale's Pizzeria Napoletana", lat: 41.4556308, lng: -71.4731648},
+
+    {title: "Rappahannock Restaurant", lat: 38.1942324, lng: -77.7527466},
+
+    {title: "Old Ebbitt Grill", lat: 38.897954, lng: -77.0355335},
     ];
 
 var Location = function(data) {
@@ -31,15 +63,14 @@ var Location = function(data) {
 	this.lat = data.lat;
 	this.lng = data.lng;
 	self.street = '';
-    self.city = '';
-    self.category = '';
-    self.id = '';
-    self.imgSrc = '';
-    self.imgPrefix = '';
-    self.imgSuffix = '';
-    self.result = '';
-
-   	self.imgURL = '';
+  self.city = '';
+  self.category = '';
+  self.id = '';
+  self.imgSrc = '';
+  self.imgPrefix = '';
+  self.imgSuffix = '';
+  self.result = '';
+ 	self.imgURL = '';
 
 	this.active = ko.observable(true);
 
@@ -74,40 +105,40 @@ var Location = function(data) {
 	var URL = rawURL.replace(/\s/g, "%20");
 
 	$.getJSON(URL).done(function(marker) {
-                var response = marker.response.venues[0];
-                self.street = response.location.formattedAddress[0];
-                self.city = response.location.formattedAddress[1];
-                self.category = response.categories[0].shortName;
-                self.id = response.id;
-                self.imgLink = '';
+    var response = marker.response.venues[0];
+    self.street = response.location.formattedAddress[0];
+    self.city = response.location.formattedAddress[1];
+    self.category = response.categories[0].shortName;
+    self.id = response.id;
+    self.imgLink = '';
 
-               	self.imgURL = 'https://api.foursquare.com/v2/venues/' + self.id + '/photos?limit=1&client_id='
-                + clientID + '&client_secret=' + clientSecret + '&v=20171224';
+   	self.imgURL = 'https://api.foursquare.com/v2/venues/' + self.id + '/photos?limit=1&client_id='
+    + clientID + '&client_secret=' + clientSecret + '&v=20171224';
 
-                $.getJSON(self.imgURL).done(function(img) {
-                	if (typeof img.response.photos.items[0] === 'undefined') {
-                		self.result += '<h5>No photo available</h5>';
-                	} else {
-	                	self.imgPrefix = img.response.photos.items[0].prefix;
-	                	self.imgSuffix = img.response.photos.items[0].suffix;
-	                	self.imgSrc = self.imgPrefix.toString() + '100x75' + self.imgSuffix.toString();
-	                	self.imgLink = '<img src="' + self.imgSrc + '">'
-	                	self.result += self.imgLink;
-	                }
-                }).fail(function( jqxhr, textStatus, error ) {
-                	var err = textStatus + ", " + error;
-                	console.log("Request Failed: " + err );
-                	self.result += '<h5>No photo available</h5>';
-                });
+    $.getJSON(self.imgURL).done(function(img) {
+    	if (typeof img.response.photos.items[0] === 'undefined') {
+    		self.result += '<h5>No photo available</h5>';
+    	} else {
+      	self.imgPrefix = img.response.photos.items[0].prefix;
+      	self.imgSuffix = img.response.photos.items[0].suffix;
+      	self.imgSrc = self.imgPrefix.toString() + '100x75' + self.imgSuffix.toString();
+      	self.imgLink = '<img src="' + self.imgSrc + '">'
+      	self.result += self.imgLink;
+      }
+    }).fail(function( jqxhr, textStatus, error ) {
+    	var err = textStatus + ", " + error;
+    	console.log("Request Failed: " + err );
+    	self.result += '<h5>No photo available</h5>';
+    });
 
-                self.result +=
-                    '<h3>' + self.title +
-                    '</h3>' + '<div>' +
-                    '<h6> Address: </h6>' +
-                    '<p>' + self.street + '</p>' +
-                    '<p>' + self.city + '</p>' +
-                    '<h6> Category: ' + self.category +
-                    '</h6>' + '</div>';
+    self.result +=
+        '<h3>' + self.title +
+        '</h3>' + '<div>' +
+        '<h6> Address: </h6>' +
+        '<p>' + self.street + '</p>' +
+        '<p>' + self.city + '</p>' +
+        '<h6> Category: ' + self.category +
+        '</h6>' + '</div>';
     }).fail(function() {
     	self.result = '<h3>Something went wrong gathering Foursquare data.</h3>';
     });
