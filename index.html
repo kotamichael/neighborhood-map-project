@@ -27,7 +27,7 @@
         <ul class="list-unstyled" style="overflow: hidden;">
             <li><a href="#placesSubmenu" data-toggle="collapse" aria-expanded="false">All the Cool Places</a></li>
               <ul class="collapse list-unstyled" data-bind="foreach: filteredPlaces" id="placesSubmenu">
-                <li id="subMenu"><a href="#" data-bind="text: title, click: $parent.listClick"></a></li>
+                <li class="light" id="subMenu"><a href="#" data-bind="text: title, click: $parent.listClick"></a></li>
               </ul>
         </ul>
 
@@ -35,7 +35,7 @@
 
       <!-- Toggle Button -->
       <div id="content">
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-custom">
           <div class="container-fluid">
 
             <div class="navbar-header">
