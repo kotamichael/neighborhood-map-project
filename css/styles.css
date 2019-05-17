@@ -3,6 +3,11 @@
 body {
   font-family: 'Poppins', sans-serif;
   background: #d3d4d4;
+  color: #edeff9;
+}
+
+.navbar-custom {
+    background-color: #4e240e;
 }
 
 a, a:hover, a:focus {
@@ -52,6 +57,16 @@ a, a:hover, a:focus {
 ul {
   overflow-y: scroll;
   max-height: 73.5vh;
+  padding-bottom: 10vh;
+  color: #083215;
+}
+
+li {
+  color: #619236;
+}
+
+li.light {
+  color: #d3d4d4;
 }
 
 #myInput {
@@ -64,7 +79,7 @@ ul {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #6d7fcc;
+    background: #083215;
 }
 
 #sidebar ul {
@@ -78,7 +93,7 @@ ul {
 }
 
 #sidebar ul p {
-    color: #fff;
+    color: #619236;
     padding: 10px;
 }
 
@@ -89,19 +104,19 @@ ul {
 }
 
 #sidebar ul li a:hover {
-    color: #7386D5;
+    color: #619236;
     background: #fff;
 }
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
-    color: #fff;
-    background: #6d7fcc;
+    color: #619236;
+    background: #083215;
 }
 
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #6d7fcc;
+    background: #083215;
 }
 
 #sidebar.active{
@@ -146,7 +161,11 @@ a[aria-expanded="true"]::before {
 -----------------------------------------------------*/
 
 h2 {
-	color: #6d7fcc;
+	color: #edeff9;
+}
+
+h3 {
+  color: #565656;
 }
 
 #content {
