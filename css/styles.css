@@ -27,7 +27,8 @@ a, a:hover, a:focus {
 	border: none;
 	border-radius: 0;
 	margin-bottom: 40px;
-	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1)
+  text-shadow: 1px 1px rgba(95, 144, 52, 0.51);
+	box-shadow: 1px 1px rgba(95, 144, 52, 0.51);
 }
 
 .navbar-btn {
@@ -80,6 +81,7 @@ li.light {
 #sidebar .sidebar-header {
     padding: 20px;
     background: #083215;
+    text-shadow: 1px 1px #4e230d;
 }
 
 #sidebar ul {
