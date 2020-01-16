@@ -1,4 +1,4 @@
-# Portland Area Neighborhood Map
+# Nostalgic Restaurants (Formerly: Portland Area Map)
 
 # Important Note:
 
