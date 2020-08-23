@@ -2,7 +2,7 @@
 
 # Important Note:
 
-What used to be a neighborhood map of Portland has been hijacked as the start of a map of places my gf and I have eaten in order to keep the memories alive.
+What used to be a neighborhood map of Portland has been hijacked as the start of a map of places I have eaten in order to keep the memories alive.
 
 > Developed as project no. 5 for the Udacity Fullstack Web Developer Nanodegree!
 
