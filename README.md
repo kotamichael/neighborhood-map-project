@@ -2,30 +2,6 @@
 
 # Important Note:
 
-``` 
-<div class="row">
-					<div class="col-sm-6">
-						<div class="form-floating mb-3">
-						<input 
-							id='OriginContactName'
-							placeholder="John Doe"
-							class='tab1shipmentFormInput form-control required'
-							type='text'>
-						<label for="OriginContactName">Contact Name</label>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="form-floating mb-3">
-						<input 
-							id='OriginContactNumber'
-							class='tab1shipmentFormInput form-control required'
-							placeholder="(xxx)xxx-xxxx"
-							type='text'>
-						<label for="OriginContactNumber">Contact Number</label>
-						</div>
-					</div>
-				</div>
-  ```
 
 What used to be a neighborhood map of Portland has been hijacked as the start of a map of places I have eaten in order to keep the memories alive.
 
